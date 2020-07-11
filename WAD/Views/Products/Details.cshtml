@@ -1,0 +1,63 @@
+﻿@model DAL.Entities.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@WAD.Resources.General.Details</title>
+</head>
+<body>
+    <div>
+        <h4>@WAD.Resources.General.Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @WAD.Resources.Product.Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @WAD.Resources.Product.Price
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt>
+                @{string imagepath = Model.Photo;
+
+                    <img src="@Url.Content(imagepath)" alt="Image" style="width: 100px;height: 150px; max-width:100%; height:auto;" />
+                }
+            </dt>
+
+
+            <dt>
+                @WAD.Resources.Product.Category
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Title)
+            </dd>
+
+
+
+        </dl>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="@WAD.Resources.General.Edit" class="btn btn-success" />*@
+                @Html.ActionLink(WAD.Resources.General.Edit, "Edit", new { id = Model.ProductID }, new { @class = "btn btn-success" })
+                @Html.ActionLink(WAD.Resources.General.Back, "Products", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</body>
+</html>

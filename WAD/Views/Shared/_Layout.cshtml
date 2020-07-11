@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Arba.uz</title>
+
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/shop-homepage.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="~/Content/images/orange-slice.png" />
+
+            @Html.ActionLink("arba.uz", "Index", "Home", null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"></li>
+                    <li>@Html.ActionLink(WAD.Resources.General.Home, "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink(WAD.Resources.General.Products, "Products", "Products", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink(WAD.Resources.General.About, "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink(WAD.Resources.General.Contact, "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink(WAD.Resources.General.LogOut, "Logout", "Home", null, new { @class = "nav-link" })</li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-link">
+                        <a href="@Url.Action("Index", new { lang = "en", controller = "Home" })">
+                            <img alt="flag-english" src="@Url.Content("~/Content/images/united-kingdom-flag-wave-icon-32.png")">
+                        </a>
+                        <a href="@Url.Action("Index", new { lang = "ru", controller = "Home" })">
+                            <img alt="flag-russian" src="@Url.Content("~/Content/images/russia-flag-wave-icon-32.png")">
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="py-5 bg-dark" style="margin-top: 4rem;">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; WIUT 2020</p>
+        </div>
+    </footer>
+
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/datatables-demo.js"></script>
+    <script src="~/Content/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/jquery.dataTables.min.js"></script>
+
+
+</body>
+
+</html>

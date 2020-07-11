@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DAL.Entities.Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink(WAD.Resources.General.Create, "Create", null, new { @class = "btn btn-success"})
+</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 >@WAD.Resources.Product.All_products</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.Product.Category</strong>
+                        </th>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.Product.User</strong>
+                        </th>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.Product.Name</strong>
+                        </th>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.Product.Price</strong>
+                        </th>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.Product.Photo</strong>
+                        </th>
+                        <th class="btn-link">
+                            <strong>@WAD.Resources.General.Actions</strong>
+                        </th>
+                    </tr>
+                <thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Category.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Lastname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.Photo))
+                                {
+                                    <img src="@Url.Content(item.Photo)" alt="Image" style="width: 100px;height: 150px; max-width:100%; height:auto;" />
+                                }
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink(WAD.Resources.General.Edit, "Edit", new { id = item.ProductID }, new { @class = "btn btn-success" })
+                                @Html.ActionLink(WAD.Resources.General.Details, "Details", new { id = item.ProductID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink(WAD.Resources.General.Delete, "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
